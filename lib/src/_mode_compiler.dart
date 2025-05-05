@@ -1,23 +1,13 @@
 part of 're_highlight.dart';
 
-Map<String, RegExp> _cache = {};
-RegExp getLangRegEx(String value, Mode language) {
-  final String key = '${language.name}/$value';
-
-  if (_cache[key] == null) {
-    _cache[key] = RegExp(
-      value,
-      multiLine: true,
-      caseSensitive: !(language.caseInsensitive ?? false),
-      unicode: language.unicodeRegex ?? false,
-    );
-  }
-  return _cache[value]!;
-}
-
 /// Builds a regex with the case sensitivity of the current language
 RegExp _langRe(Mode language, String value, bool global) {
-  return getLangRegEx(value, language);
+  return RegExp(
+    value,
+    multiLine: true,
+    caseSensitive: !(language.caseInsensitive ?? false),
+    unicode: language.unicodeRegex ?? false,
+  );
 }
 
 /// Compiles a language definition result
