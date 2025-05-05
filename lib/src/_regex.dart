@@ -8,6 +8,7 @@ part of 're_highlight.dart';
 // - non-matching or lookahead parentheses, which do not capture. These
 //   follow the '(' with a '?'.
 const String _backrefRe = r'\[(?:[^\\\]]|\\.)*\]|\(\??|\\([1-9][0-9]*)|\\.';
+RegExp backrefRegExp = RegExp(_backrefRe);
 
 String _concat(List<String?> values) {
   return values.join();
@@ -44,7 +45,7 @@ String _rewriteBackreferences(
         final int offset = numCaptures;
         String out = '';
         while (regex.isNotEmpty) {
-          final RegExpMatch? match = RegExp(_backrefRe).firstMatch(regex);
+          final RegExpMatch? match = backrefRegExp.firstMatch(regex);
           if (match == null) {
             out += regex;
             break;
