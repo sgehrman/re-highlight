@@ -3,7 +3,7 @@ part of 're_highlight.dart';
 Map<String, RegExp> _cache = {};
 RegExp getLangRegEx(String value, Mode language) {
   final String key =
-      '${language.caseInsensitive ?? false}/${language.unicodeRegex ?? false}/$value';
+      '${language.name}/${language.caseInsensitive ?? false}/${language.unicodeRegex ?? false}/$value';
 
   if (_cache[key] == null) {
     _cache[key] = RegExp(
@@ -13,7 +13,8 @@ RegExp getLangRegEx(String value, Mode language) {
       unicode: language.unicodeRegex ?? false,
     );
   }
-  return _cache[value]!;
+
+  return _cache[key]!;
 }
 
 /// Builds a regex with the case sensitivity of the current language
