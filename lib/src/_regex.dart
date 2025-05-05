@@ -25,7 +25,17 @@ String _either(List<String> args) {
 }
 
 int _countMatchGroups(String re) {
-  return RegExp('$re|').allMatches('').first.groupCount;
+  return _getRegExp('$re|').allMatches('').first.groupCount;
+}
+
+Map<String, RegExp> _regExpCache = {};
+RegExp _getRegExp(String re) {
+  if (_regExpCache.containsKey(re)) {
+    return _regExpCache[re]!;
+  }
+  final RegExp result = RegExp(re);
+  _regExpCache[re] = result;
+  return result;
 }
 
 // **INTERNAL** Not intended for outside usage
