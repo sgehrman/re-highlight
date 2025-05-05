@@ -5,10 +5,10 @@ const String _kSpanClose = '</span>';
 String _escapeHTML(String value) {
   return value
       .replaceAll(r'&', '&amp;')
-      .replaceAll(RegExp(r'<'), '&lt;')
-      .replaceAll(RegExp(r'>'), '&gt;')
-      .replaceAll(RegExp(r'"'), '&quot;')
-      .replaceAll(RegExp(r"'"), '&#x27;');
+      .replaceAll(getRegExp(r'<'), '&lt;')
+      .replaceAll(getRegExp(r'>'), '&gt;')
+      .replaceAll(getRegExp(r'"'), '&quot;')
+      .replaceAll(getRegExp(r"'"), '&#x27;');
 }
 
 /// Determines if a node needs to be wrapped in <span>
