@@ -13,11 +13,11 @@ dependencies:
   path: ^1.9.1
   collection: ^1.19.1
 
-dev_dependencies: 
+dev_dependencies:
   dart_code_metrics:
-    git: https://github.com/JonasWanke/dart-code-metrics
+    git: https://github.com/JonasWanke/dart-code-metrics.git
   dfc_lints:
-    git: https://github.com/sgehrman/dfc_lints
+    git: https://github.com/sgehrman/dfc_lints.git
   flutter_test:
     sdk: flutter
   flutter_lints: ^5.0.0
